@@ -15,7 +15,9 @@ class MainActivity : ComponentActivity() {
                 val state = CalculatorState()
                 CalculatorScreen(
                     state = state,
-                    onButtonPress = {}
+                    onButtonPress = {
+
+                    }
                 )
             }
         }
