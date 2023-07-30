@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Calculate</string>
+    <string name="all_clear">AC</string>
+    <string name="back_press"><![CDATA[<<]]></string>
+    <string name="negative">+/-</string>
+    <string name="division">/</string>
+    <string name="multiplication">*</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="point">.</string>
+    <string name="equals">=</string>
 </resources>

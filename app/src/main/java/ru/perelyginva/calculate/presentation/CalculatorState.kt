@@ -8,5 +8,5 @@ data class CalculatorState(
     val displayNumber: String = "0",
     val operation: MathOperation? = null,
     val currentEquation: String = "",
-    val equation: List<String> = emptyList()
+    val equations: List<String> = emptyList()
 )

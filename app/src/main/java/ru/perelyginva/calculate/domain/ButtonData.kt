@@ -1,6 +1,6 @@
 package ru.perelyginva.calculate.domain
 
 data class ButtonData(
-    val text: String,
+    var text: String,
     val onPress: () -> Unit
 )
