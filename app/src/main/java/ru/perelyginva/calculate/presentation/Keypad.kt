@@ -25,35 +25,35 @@ import ru.perelyginva.calculate.ui.theme.Blue
 import ru.perelyginva.calculate.ui.theme.CalculateTheme
 
 @Composable
-fun Keypad(onButtonPress: (ButtonAction) -> Unit) {
+fun Keypad(onButtonPress: (ButtonAction) -> Unit){
 
-    val clear = { onButtonPress(ButtonAction.Clear) }
-    val backspace = { onButtonPress(ButtonAction.Backspace) }
-    val negate = { onButtonPress(ButtonAction.Negation) }
-    val division = { onButtonPress(ButtonAction.Operation(MathOperation.Division)) }
-    val multiplication = { onButtonPress(ButtonAction.Operation(MathOperation.Multiplication)) }
-    val subtraction = { onButtonPress(ButtonAction.Operation(MathOperation.Subtraction)) }
-    val addition = { onButtonPress(ButtonAction.Operation(MathOperation.Addition)) }
-    val decimal = { onButtonPress(ButtonAction.Decimal) }
-    val equals = { onButtonPress(ButtonAction.Equals) }
+    val clear = {onButtonPress(ButtonAction.Clear)}
+    val backspace = {onButtonPress(ButtonAction.Backspace)}
+    val negate = {onButtonPress(ButtonAction.Negation)}
+    val division = {onButtonPress(ButtonAction.Operation(MathOperation.Division))}
+    val multiplication = {onButtonPress(ButtonAction.Operation(MathOperation.Multiplication))}
+    val subtraction = {onButtonPress(ButtonAction.Operation(MathOperation.Subtraction))}
+    val addition = {onButtonPress(ButtonAction.Operation(MathOperation.Addition))}
+    val decimal = {onButtonPress(ButtonAction.Decimal)}
+    val equals = {onButtonPress(ButtonAction.Equals)}
 
     var numbers: List<() -> Unit> = emptyList()
-
-    for (i in 0..9) {
-        numbers = numbers + { onButtonPress(ButtonAction.Number(i)) }
+    for(i in 0..9){
+        numbers = numbers + {onButtonPress(ButtonAction.Number(i))}
     }
 
     val row1 = listOf(
         ButtonData(text = "AC", onPress = clear),
         ButtonData(text = "<<", onPress = backspace),
         ButtonData(text = "+/-", onPress = negate),
-        ButtonData(text = "/", onPress = division)
+        ButtonData(text = "/", onPress = division),
     )
+
     val row2 = listOf(
         ButtonData(text = "7", onPress = numbers[7]),
         ButtonData(text = "8", onPress = numbers[8]),
         ButtonData(text = "9", onPress = numbers[9]),
-        ButtonData(text = "*", onPress = multiplication),
+        ButtonData(text = "x", onPress = multiplication),
     )
 
     val row3 = listOf(
@@ -70,35 +70,37 @@ fun Keypad(onButtonPress: (ButtonAction) -> Unit) {
         ButtonData(text = "+", onPress = addition),
     )
 
+
     val row5 = listOf(
         ButtonData(text = "0", onPress = numbers[0]),
         ButtonData(text = ".", onPress = decimal),
         ButtonData(text = "=", onPress = equals),
+    )
 
-        )
-
-    Column() {
+    Column(){
         BuildRow(row1)
         BuildRow(row2)
         BuildRow(row3)
         BuildRow(row4)
         BuildRow(row5)
     }
+
 }
 
 @Composable
-fun BuildRow(row: List<ButtonData>) {
+fun BuildRow(row: List<ButtonData>){
     Spacer(modifier = Modifier.height(2.dp))
     Row(
         horizontalArrangement = Arrangement.SpaceEvenly,
         modifier = Modifier
             .fillMaxWidth()
-    ) {
-        for (item in row) {
+    ){
+        for(item in row){
             Spacer(modifier = Modifier.width(2.dp))
             CalculatorButton(
                 button = item,
-                modifier = Modifier.weight(1f))
+                modifier = Modifier.weight(1f)
+            )
             Spacer(modifier = Modifier.width(2.dp))
         }
     }
@@ -106,19 +108,18 @@ fun BuildRow(row: List<ButtonData>) {
 }
 
 @Composable
-fun CalculatorButton(button: ButtonData, modifier: Modifier = Modifier) {
-
+fun CalculatorButton(button: ButtonData, modifier: Modifier = Modifier){
     var color = Blue
     var textColor = Color.White
 
-    if (button.text == "AC" || button.text == "<<") {
+    if(button.text == "AC" || button.text == "<<"){
         color = Color.Gray
         textColor = Color.Black
     }
-    if (button.text.isDigitsOnly() || button.text == "."){
+    if(button.text.isDigitsOnly() || button.text == "."){
         color = Color.DarkGray
     }
-    
+
     Button(
         onClick = button.onPress,
         shape = RoundedCornerShape(15.dp),
@@ -127,16 +128,16 @@ fun CalculatorButton(button: ButtonData, modifier: Modifier = Modifier) {
     ){
         Text(
             text = button.text,
-            fontSize = 34.sp,
-            color = textColor,
+            fontSize = 30.sp,
+            color = textColor
         )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun KeypadPreview(){
+fun KeypadPreview() {
     CalculateTheme {
-        Keypad{ }
+        Keypad { }
     }
 }

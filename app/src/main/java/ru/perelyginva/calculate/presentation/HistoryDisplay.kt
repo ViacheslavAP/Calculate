@@ -25,18 +25,18 @@ import ru.perelyginva.calculate.ui.theme.CalculateTheme
 import ru.perelyginva.calculate.ui.theme.ScreenBackground
 
 @Composable
-fun HistoryDisplay(state: CalculatorState, modifier: Modifier = Modifier) {
+fun HistoryDisplay(state: CalculatorState, modifier: Modifier = Modifier){
 
     val listState = rememberLazyListState()
-    LaunchedEffect(state.equations.size) {
+    LaunchedEffect(state.equations.size){
         listState.animateScrollToItem(index = state.equations.size)
     }
 
     LazyColumn(
         state = listState,
         modifier = modifier
-    ) {
-        items(state.equations) { eqation ->
+    ){
+        items(state.equations){ equation ->
             Row(
                 horizontalArrangement = Arrangement.End,
                 modifier = Modifier
@@ -44,22 +44,23 @@ fun HistoryDisplay(state: CalculatorState, modifier: Modifier = Modifier) {
                     .clip(RoundedCornerShape(15.dp))
                     .background(ScreenBackground)
                     .padding(4.dp)
-            ) {
-                Spacer(modifier = Modifier.width(4.dp))
+            ){
+                Spacer(Modifier.width(4.dp))
                 Text(
-                    text = eqation,
+                    text = equation,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     fontSize = 28.sp,
                     modifier = Modifier
                         .background(ScreenBackground)
                 )
-                Spacer(modifier = Modifier.width(4.dp))
+                Spacer(Modifier.width(4.dp))
             }
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(Modifier.height(4.dp))
         }
     }
 }
+
 @Preview
 @Composable
 fun HistoryPreview(){

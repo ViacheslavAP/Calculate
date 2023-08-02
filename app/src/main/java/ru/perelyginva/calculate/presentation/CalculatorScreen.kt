@@ -19,7 +19,7 @@ import ru.perelyginva.calculate.ui.theme.CalculateTheme
 fun CalculatorScreen(
     state: CalculatorState,
     onButtonPress: (ButtonAction) -> Unit,
-) {
+){
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -27,14 +27,11 @@ fun CalculatorScreen(
             .padding(horizontal = 8.dp),
         verticalArrangement = Arrangement.spacedBy(4.dp),
         horizontalAlignment = Alignment.End
-    ) {
-        HistoryDisplay(
-            state = state,
-            modifier = Modifier.weight(1f))
+    ){
+        HistoryDisplay(state = state, modifier = Modifier.weight(1f))
         DisplayScreen(state = state)
-         Keypad(onButtonPress = onButtonPress)
+        Keypad(onButtonPress = onButtonPress)
     }
-
 }
 
 @Preview
@@ -49,8 +46,6 @@ fun CalculatorScreenPreview(){
             operation = MathOperation.Multiplication,
             currentEquation = "3 * 3.14",
             equations = listOf("7 * 7 = 49", "16 / 2 = 8", "2 + 8 = 10", "14 - 8 = 6 "),
-
-
         )
          CalculatorScreen(state = state, onButtonPress = {})
     }

@@ -24,7 +24,7 @@ import ru.perelyginva.calculate.ui.theme.CalculateTheme
 import ru.perelyginva.calculate.ui.theme.ScreenBackground
 
 @Composable
-fun DisplayScreen(state: CalculatorState, modifier: Modifier = Modifier){
+fun DisplayScreen(state: CalculatorState, modifier: Modifier = Modifier) {
 
     Column(
         horizontalAlignment = Alignment.End,
@@ -36,10 +36,11 @@ fun DisplayScreen(state: CalculatorState, modifier: Modifier = Modifier){
             .background(ScreenBackground)
             .padding(6.dp)
     ) {
-ScreenRow(
-    fontSize = 34,
-    text = state.currentEquation,
-    modifier = modifier)
+        ScreenRow(
+            fontSize = 34,
+            text = state.currentEquation,
+            modifier = modifier
+        )
         ScreenRow(
             fontSize = 60,
             text = state.displayNumber,
@@ -49,20 +50,22 @@ ScreenRow(
 }
 
 @Composable
-fun ScreenRow(fontSize: Int, text: String, modifier: Modifier = Modifier){
+fun ScreenRow(fontSize: Int, text: String, modifier: Modifier = Modifier) {
     Row(modifier = modifier) {
         Spacer(modifier = Modifier.width(4.dp))
-        Text(text = text,
+        Text(
+            text = text,
             fontSize = fontSize.sp,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis)
-        Spacer(modifier = Modifier.width(4.dp)) 
+            overflow = TextOverflow.Ellipsis
+        )
+        Spacer(modifier = Modifier.width(4.dp))
     }
 }
 
 @Preview
 @Composable
-fun DisplayScreenPreview(){
+fun DisplayScreenPreview() {
     CalculateTheme {
         var state = CalculatorState()
         state = state.copy(
